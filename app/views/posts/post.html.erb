@@ -1,1 +1,14 @@
-<h1>Post details</h1>
+<div>
+  <div>
+    Post: <%= @post.title %> Created by <%= @post.author.name %> | comments:<% if
+    @post.comments_counter.to_i > 0 %> <%= @post.comments_counter %> <% else %> 0 <% end %> , likes
+    :<% if @post.likes_counter.to_i > 0 %> <%= @post.likes_counter %> <% else %> 0 <% end %>
+    <p><%= @post.text %></p>
+  </div>
+  <div>
+    <h3>Comments</h3>
+    <% @post.five_recent_comments.each do |comment|%> <%= comment.author.name %>: <%= comment.text
+    %>
+    <% end %>
+  </div>
+</div>

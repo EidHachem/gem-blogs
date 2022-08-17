@@ -1,1 +1,29 @@
-<h1>User profile</h1>
+<div>
+  <div>
+    <%= image_tag @user.photo, :alt => "#{@user.name} image" %>
+    <p><%= @user.name %></p>
+    <span> Number of posts: <%= @user.post_counter %></span>
+  </div>
+  <div>
+    <h3>Bio:</h3>
+    <p><%= @user.bio %></p>
+  </div>
+  <div>
+    <% @user.three_recent_posts.each do |post| %>
+    <h5>Post #<%= @user.three_recent_posts.index(post)+1 %></h5>
+    <h4><%= post.title %></h4>
+    <p><%= post.text %></p>
+    <% if post.comments_counter.to_i > 0 %>
+    <span>Comments: <%= post.comments_counter %></span>
+    <% else %>
+    <span>Comments: <%= 0 %></span>
+    <% end %>
+    <% if post.likes_counter.to_i > 0 %>
+    <span>Likes:<%= post.likes_counter %></span>
+    <% else %>
+    <span>Likes: <%= 0 %></span>
+    <% end %>
+    <% end %>
+  </div>
+  <button type="button">See all posts</button>
+</div>

@@ -1,1 +1,11 @@
-<h1>Listing users</h1>
+<div>
+  <% @users.each do |user| %>
+  <div>
+    <%= image_tag user.photo, :alt => "#{user.name} image" %>
+    <div>
+      <p class="ypx-5 text-blue-500"><%= user.name %></p>
+      <span>Number of posts: <%= user.post_counter %> </span>
+    </div>
+  </div>
+  <% end %>
+</div>
