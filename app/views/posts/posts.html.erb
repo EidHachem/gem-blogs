@@ -1,26 +1,39 @@
-<div>
-  <div>
-    <%= image_tag @user.photo, :alt => "#{@user.name} image" %>
-    <p><%= @user.name %></p>
-    <span> Number of posts: <%= @user.post_counter %></span>
+<div class="mx-auto d-flex flex-column" style="max-width: 80%">
+  <div class="d-flex mb-3 mt-4">
+    <div class="flex-shrink-0 img-thumbnail">
+      <%= image_tag "user.jpg", :alt => "#{@user.name} image", width:150, hight:150 %>
+    </div>
+    <div class="flex-grow-1 ms-3 d-flex flex-column px-5 py-3 align-items-center border">
+      <h3 class="align-self-start mt-50"><%= @user.name %></h3>
+      <span class="align-self-end">
+        Number of posts: <% if @user.post_counter.to_i > 0 %> <%= @user.post_counter %> <% else %>
+        <%= 0 %> <% end %>
+      </span>
+    </div>
   </div>
   <div>
     <% @user.three_recent_posts.each do |post| %>
-    <h5>Post #<%= @user.three_recent_posts.index(post)+1 %></h5>
-    <h4><%= post.title %></h4>
-    <p><%= post.text %></p>
+    <div class="border p-3 mb-2">
+      <h5>Post #<%= @user.three_recent_posts.index(post)+1 %></h5>
+      <h4><%= post.title %></h4>
+      <p><%= post.text %></p>
+      <% if post.comments_counter.to_i > 0 %>
+      <span>Comments: <%= post.comments_counter %></span>
+      <% else %>
+      <span>Comments: <%= 0 %></span>
+      <% end %> <% if post.likes_counter.to_i > 0 %>
+      <span>Likes:<%= post.likes_counter %></span>
+      <% else %>
+      <span>Likes: <%= 0 %></span>
+    </div>
+    <% end %>
     <% if post.comments_counter.to_i > 0 %>
-    <span>Comments: <%= post.comments_counter %></span>
-    <% else %>
-    <span>Comments: <%= 0 %></span>
-    <% end %>
-    <% if post.likes_counter.to_i > 0 %>
-    <span>Likes:<%= post.likes_counter %></span>
-    <% else %>
-    <span>Likes: <%= 0 %></span>
-    <% end %>
-    <% post.five_recent_comments.each do |comment| %>
-    <p><%= comment.text %></p>
+    <div class="border p-3 mb-2">
+      <% post.five_recent_comments.each do |comment| %>
+      <h5><%= comment.author.name %></h5>
+      <p><%= comment.text %></p>
+      <% end %>
+    </div>
     <% end %>
     <% end %>
   </div>

@@ -1,10 +1,15 @@
-<div>
+<div class="mx-auto" style="width: 70%;">
   <% @users.each do |user| %>
-  <div>
-    <%= image_tag user.photo, :alt => "#{user.name} image" %>
-    <div>
-      <p class="ypx-5 text-blue-500"><%= user.name %></p>
-      <span>Number of posts: <%= user.post_counter %> </span>
+  <div class="d-flex mb-3 p-3 mx-auto">
+    <div class="flex-shrink-0 img-thumbnail"><%= image_tag "user.jpg", :alt => "#{user.name} image", width:150, hight:150 %></div>
+    <div class="flex-grow-1 ms-3 d-flex flex-column px-5 py-3 align-items-center border">
+      <h3 class="align-self-start mt-50"><%= user.name %></h3>
+      <span class="align-self-end">Number of posts: <% if user.post_counter.to_i > 0 %>
+        <%= user.post_counter %>
+        <% else %>
+        <%= 0 %>
+        <% end %>
+       </span>
     </div>
   </div>
   <% end %>
