@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "users#index"
   get '/user/:id', to: 'users#show'
-  get 'post/new', to: 'posts#new'
-  post '/user/:id/post/', to: 'posts#create'
+  get '/post/new', to: 'posts#new'
+  post '/post/new', to: 'posts#create'
+  post '/addcomment/:id', to: "posts#addcomment"
   get '/user/:id/post/', to: 'posts#posts'
   get '/user/:id/post/:id', to: 'posts#post'
+  get 'addlike/:id', to: "posts#addlike"
 end

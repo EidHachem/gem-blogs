@@ -27,6 +27,9 @@
       <span>Likes: <%= 0 %></span>
     </div>
     <% end %>
+    <div><h1>Click Heart Below To Add Like<h1>
+      <a href="/addlike/<%= @post.id %>"><%= image_tag '/assets/heart.png', :style => "height:60px;width:60px;"%></a>
+      </div>
     <% if post.comments_counter.to_i > 0 %>
     <div class="border p-3 mb-2">
       <% post.five_recent_comments.each do |comment| %>
