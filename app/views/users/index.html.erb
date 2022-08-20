@@ -1,4 +1,5 @@
 <div class="mx-auto" style="width: 70%;">
+<p><%= link_to "New Post", 'post/new', class: 'btn btn-primary' %></p>
   <% @users.each do |user| %>
   <div class="d-flex mb-3 p-3 mx-auto">
     <div class="flex-shrink-0 img-thumbnail"><%= image_tag "user.jpg", :alt => "#{user.name} image", width:150, hight:150 %></div>
