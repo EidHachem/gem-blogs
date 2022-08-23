@@ -19,7 +19,7 @@ RSpec.describe 'Testing users views', type: :feature do
         (1..5).each { |i| first_user.posts.create title: "Post number #{i}", text: "This is my #{i} post!" }
         visit "/user/#{first_user.id}"
       end
-      it "I can see the profile pictures of each user." do
+      it 'I can see the profile pictures of each user.' do
         User.create!(name: 'Tom', photo: 'photo.jpg', bio: 'Teacher from Mexico.')
         User.create!(name: 'Evren', photo: 'photo.jpg', bio: 'Teacher from Mexico.')
         expect(page.find('img')['src']).to have_content 'photo.jpg'
