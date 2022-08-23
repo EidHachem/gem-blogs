@@ -1,7 +1,7 @@
 <div class="mx-auto d-flex flex-column" style="max-width: 80%">
   <div class="d-flex mb-3 mt-4">
     <div class="flex-shrink-0 img-thumbnail">
-      <%= image_tag "user.jpg", :alt => "#{@user.name} image", width:150, hight:150 %>
+      <img src="<%= @user.photo %>" alt="User" >
     </div>
     <div class="flex-grow-1 ms-3 d-flex flex-column px-5 py-3 align-items-center border">
       <h3 class="align-self-start mt-50"><%= @user.name %></h3>
@@ -15,7 +15,7 @@
     <% @user.three_recent_posts.each do |post| %>
     <div class="border p-3 mb-2">
       <h5>Post #<%= @user.three_recent_posts.index(post)+1 %></h5>
-      <h4><%= post.title %></h4>
+      <h4><%= link_to post.title, "/user/#{@user.id}/post/#{post.id}" %></h4>
       <p><%= post.text %></p>
       <% if post.comments_counter.to_i > 0 %>
       <span>Comments: <%= post.comments_counter %></span>
@@ -27,8 +27,8 @@
       <span>Likes: <%= 0 %></span>
     </div>
     <% end %>
-    <div><h1>Click Heart Below To Add Like<h1>
-      <a href="/addlike/<%= @post.id %>"><%= image_tag '/assets/heart.png', :style => "height:60px;width:60px;"%></a>
+    <div><h5>Click Heart Below To Add Like<h5>
+      <a href='/addlike/<%= post.id %>'><%= image_tag '/assets/heart.png', :style => "height:60px;width:60px;"%></a>
       </div>
     <% if post.comments_counter.to_i > 0 %>
     <div class="border p-3 mb-2">
@@ -40,4 +40,5 @@
     <% end %>
     <% end %>
   </div>
+  <button>Pagination</button>
 </div>

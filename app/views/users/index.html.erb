@@ -2,9 +2,9 @@
 <p><%= link_to "New Post", 'post/new', class: 'btn btn-primary' %></p>
   <% @users.each do |user| %>
   <div class="d-flex mb-3 p-3 mx-auto">
-    <div class="flex-shrink-0 img-thumbnail"><%= image_tag "user.jpg", :alt => "#{user.name} image", width:150, hight:150 %></div>
+    <div class="flex-shrink-0 img-thumbnail"><img src="<%= user.photo %>" alt="User" > </div>
     <div class="flex-grow-1 ms-3 d-flex flex-column px-5 py-3 align-items-center border">
-      <h3 class="align-self-start mt-50"><%= user.name %></h3>
+      <h3 class="align-self-start mt-50"><%= link_to user.name, "/user/#{user.id}/post/" %></h3>
       <span class="align-self-end">Number of posts: <% if user.post_counter.to_i > 0 %>
         <%= user.post_counter %>
         <% else %>

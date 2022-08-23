@@ -4,7 +4,7 @@
       <h3>Post: <%= @post.title %> Created by <span><%= @post.author.name %></span></h3>
       <p>
         comments:<% if @post.comments_counter.to_i > 0 %> <%= @post.comments_counter %> <% else %> 0
-        <% end %> , likes :<% if @post.likes_counter.to_i > 0 %> <%= @post.likes_counter %> <% else
+        <% end %> , likes:<% if @post.likes_counter.to_i > 0 %> <%= @post.likes_counter %> <% else
         %> 0 <% end %>
       </p>
     </div>
