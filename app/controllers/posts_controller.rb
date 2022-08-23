@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   def posts
     @user = User.find(params[:id])
-    @post = Post.find(params[:id])
+    @post = @user.posts
   end
 
   def post
-    @post = Post.find(params[:id])
+    @post = Post.includes(:author).find(params[:id])
   end
 
   def new
