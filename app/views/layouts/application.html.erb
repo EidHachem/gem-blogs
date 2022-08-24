@@ -14,7 +14,10 @@
   </head>
 
   <body>
-    <% if user_signed_in? %> <%= button_to "logout", destroy_user_session_path, method: :delete %>
-    <% else %> <%= button_to "signin", new_user_session_path, method: :get %> <% end %> <%= yield %>
+    <% flash.each do |name, msg| -%>
+      <p class="container mx-auto mt-10"><%= msg %></p>
+    <% end -%>
+    <% if user_signed_in? %> <%= button_to "logout", destroy_user_session_path, method: :delete, :class => 'btn btn-primary' %>
+    <% end %> <%= yield %>
   </body>
 </html>
